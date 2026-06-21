@@ -3,88 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <title>Hugo's Arcade</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#090d1f">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;height:100%;background:#090d1f;color:white;overflow-x:hidden}
-body{background:radial-gradient(circle at top left,#203cff55,transparent 35%),radial-gradient(circle at bottom right,#ff3d8f33,transparent 35%),linear-gradient(145deg,#090d1f,#121827 55%,#0b1020)}
-body::-webkit-scrollbar{width:0;background:transparent}
-#homeScreen{min-height:100vh}
-.topbar{min-height:118px;padding:22px 18px 18px;border-bottom:2px solid rgba(255,255,255,.08);background:rgba(5,8,20,.72);backdrop-filter:blur(18px);position:sticky;top:0;z-index:10}
-.badge{width:max-content;padding:6px 11px;border-radius:999px;background:rgba(99,102,241,.22);border:1px solid rgba(129,140,248,.35);color:#c7d2fe;font-size:12px;font-weight:900;margin-bottom:10px}
-h1{font-size:28px;line-height:1;color:#fff;letter-spacing:-.7px}
-h1 span{color:#7dd3fc}
-.subtitle{margin-top:8px;color:#cbd5e1;font-size:13px;line-height:18px;max-width:320px}
-.menu{display:flex;gap:8px;overflow-x:auto;padding:14px 16px 2px;scrollbar-width:none}
-.menu::-webkit-scrollbar{display:none}
-.pill{flex:0 0 auto;border:none;border-radius:999px;padding:10px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#e2e8f0;font-size:13px;font-weight:900}
-.pill.active{background:linear-gradient(135deg,#6366f1,#38bdf8);box-shadow:0 0 22px rgba(56,189,248,.25)}
-.cards{display:grid;grid-template-columns:1fr;gap:16px;padding:16px;max-width:540px;margin:0 auto 24px}
-.card{display:block;text-decoration:none;color:inherit;border-radius:22px;overflow:hidden;background:rgba(15,23,42,.72);border:1px solid rgba(255,255,255,.10);box-shadow:0 18px 45px rgba(0,0,0,.38);position:relative;cursor:pointer}
-.card:active{transform:scale(.985)}
-.thumb{height:150px;background:#111;position:relative;overflow:hidden}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.05)}
-.thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.72))}
-.tag{position:absolute;top:12px;left:12px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);font-size:11px;font-weight:900;color:white;border:1px solid rgba(255,255,255,.14)}
-.play{position:absolute;right:12px;bottom:12px;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#22c55e,#14b8a6);font-size:20px;box-shadow:0 0 24px rgba(34,197,94,.35);z-index:2}
-.info{padding:15px}
-.titleRow{display:flex;align-items:center;justify-content:space-between;gap:10px}
-h2{font-size:19px;line-height:24px}
-.type{font-size:11px;font-weight:900;color:#93c5fd;background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.22);padding:5px 8px;border-radius:999px;white-space:nowrap}
-.desc{margin-top:9px;color:#cbd5e1;font-size:13px;line-height:19px}
-.meta{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap}
-.meta span{font-size:11px;color:#dbeafe;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);padding:6px 8px;border-radius:10px}
-.card:nth-child(1){border-color:rgba(34,197,94,.28)}
-.card:nth-child(1) .type{color:#bbf7d0;background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.22)}
-.card:nth-child(2){border-color:rgba(249,115,22,.28)}
-.card:nth-child(2) .play{background:linear-gradient(135deg,#f97316,#ef4444)}
-.card:nth-child(2) .type{color:#fed7aa;background:rgba(249,115,22,.14);border-color:rgba(249,115,22,.22)}
-.card:nth-child(3){border-color:rgba(56,189,248,.28)}
-.card:nth-child(3) .play{background:linear-gradient(135deg,#38bdf8,#6366f1)}
-.card:nth-child(4){border-color:rgba(168,85,247,.28)}
-.card:nth-child(4) .play{background:linear-gradient(135deg,#a855f7,#ec4899)}
-.card:nth-child(5){border-color:rgba(244,63,94,.28)}
-.card:nth-child(5) .play{background:linear-gradient(135deg,#f43f5e,#fb7185)}
-.footer{padding:18px;text-align:center;color:#94a3b8;font-size:12px;border-top:1px solid rgba(255,255,255,.08);background:rgba(2,6,23,.5)}
-#gameScreen{display:none;position:fixed;inset:0;background:#000;z-index:999999}
-#gameFrame{width:100%;height:100%;border:none;background:#000}
-#backBtn{position:fixed;top:12px;left:12px;z-index:1000000;width:52px;height:52px;border:none;border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(14px);color:white;font-size:28px;font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08)}
-@media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr);max-width:920px}.topbar{padding-left:30px}.thumb{height:165px}}
-@media(min-width:1080px){.cards{grid-template-columns:repeat(3,1fr);max-width:1180px}.thumb{height:170px}}
+body{margin:0;background:#0b1020;color:white;font-family:Arial}
+.topbar{min-height:118px;padding:22px 18px 18px;background:#111827;position:relative}
+.menu{display:flex;gap:8px;padding:12px}
+.pill{padding:10px 14px;border:none;border-radius:999px;background:#222;color:#fff}
+.pill.active{background:#3b82f6}
+.cards{padding:16px;display:grid;gap:12px}
+.card{background:#1f2937;padding:16px;border-radius:16px;cursor:pointer}
+#gameScreen{display:none;position:fixed;inset:0;background:#000}
+#gameFrame{width:100%;height:100%;border:none}
+#backBtn{position:fixed;top:12px;left:12px;width:52px;height:52px;border:none;border-radius:50%;background:rgba(0,0,0,.6);color:white;font-size:28px}
 </style>
 </head>
 <body>
 <div id="homeScreen">
-<header class="topbar"><div class="badge">🎮 Hugo's Hub Mobile</div><h1>Arcade <span>Games</span></h1><p class="subtitle">Escolha um jogo e toque para abrir dentro do app. Use a setinha para voltar ao menu.</p></header>
-<nav class="menu"><button class="pill active">🔥 Todos</button><button class="pill">🏹 Ação</button><button class="pill">🚗 Corrida</button><button class="pill">💘 Casual</button></nav>
+<header class="topbar">
+<h1>Arcade Games</h1>
+<p>Escolha um jogo e toque para abrir dentro do app.</p>
+</header>
+
+<nav class="menu">
+<button class="pill active" onclick="filterGames('todos',this)">🔥 Todos</button>
+<button class="pill" onclick="filterGames('acao',this)">🏹 Ação</button>
+<button class="pill" onclick="filterGames('corrida',this)">🚗 Corrida</button>
+<button class="pill" onclick="filterGames('casual',this)">💘 Casual</button>
+</nav>
+
 <main class="cards">
-<div class="card" onclick="openGame('https://db.ducklit.com/html/ragdoll_archers/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ragdoll-archers.jpg"><div class="tag">Jogo 01</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Ragdoll Archers</h2><div class="type">Ação</div></div><p class="desc">Arqueiros malucos, física ragdoll e batalhas rápidas para testar mira e paciência.</p><div class="meta"><span>🏹 Arco</span><span>⚔️ Batalha</span><span>⭐ Evolução</span></div></div></div>
-<div class="card" onclick="openGame('https://db.ducklit.com/html/gun_spin/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io//img/gun-spin.jpg"><div class="tag">Jogo 02</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Gun Spin</h2><div class="type">Skill</div></div><p class="desc">Use o recuo da arma para voar mais longe, juntar moedas e melhorar seu alcance.</p><div class="meta"><span>🔫 Recuo</span><span>💰 Upgrade</span><span>🚀 Distância</span></div></div></div>
-<div class="card" onclick="openGame('https://db.ducklit.com/html/wheelie_bike/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/wheelie-bike.jpg"><div class="tag">Jogo 03</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Wheelie Bike</h2><div class="type">Equilíbrio</div></div><p class="desc">Segure o grau pelo máximo de tempo possível sem cair. Simples, difícil e viciante.</p><div class="meta"><span>🚲 Bike</span><span>⚖️ Equilíbrio</span><span>🏆 Recorde</span></div></div></div>
-<div class="card" onclick="openGame('https://db.ducklit.com/html/escape_car/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Escape-Car.jpg"><div class="tag">Jogo 04</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Escape Car</h2><div class="type">Corrida</div></div><p class="desc">Fuja, desvie e sobreviva no trânsito caótico. Reflexo rápido é tudo aqui.</p><div class="meta"><span>🚗 Carro</span><span>💨 Fuga</span><span>⚡ Reflexo</span></div></div></div>
-<div class="card" onclick="openGame('https://db2.ducklit.com/2021/3/love-tester/pre.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/love-tester.jpg"><div class="tag">Jogo 05</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Love Tester</h2><div class="type">Casual</div></div><p class="desc">Digite os nomes e descubra a porcentagem do amor. Perfeito para zoar os amigos.</p><div class="meta"><span>💘 Amor</span><span>😂 Zoação</span><span>🎲 Sorte</span></div></div></div>
+<div class="card" data-category="acao">Ragdoll Archers</div>
+<div class="card" data-category="acao">Gun Spin</div>
+<div class="card" data-category="corrida">Wheelie Bike</div>
+<div class="card" data-category="corrida">Escape Car</div>
+<div class="card" data-category="casual">Love Tester</div>
 </main>
-<div class="footer">© 2026 Hugo's Hub • Arcade mobile</div>
 </div>
 
 <div id="gameScreen">
 <button id="backBtn" onclick="goHome()">‹</button>
-<iframe id="gameFrame" allowfullscreen></iframe>
+<iframe id="gameFrame"></iframe>
 </div>
 
 <script>
-function openGame(url){
-  document.getElementById("homeScreen").style.display="none";
-  document.getElementById("gameScreen").style.display="block";
-  document.getElementById("gameFrame").src=url;
-}
 function goHome(){
-  document.getElementById("gameFrame").src="about:blank";
-  document.getElementById("gameScreen").style.display="none";
-  document.getElementById("homeScreen").style.display="block";
+document.getElementById("gameScreen").style.display="none";
+document.getElementById("homeScreen").style.display="block";
+}
+function filterGames(category,btn){
+document.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));
+btn.classList.add("active");
+document.querySelectorAll(".card").forEach(card=>{
+card.style.display=(category==="todos"||card.dataset.category===category)?"block":"none";
+});
 }
 </script>
 </body>
