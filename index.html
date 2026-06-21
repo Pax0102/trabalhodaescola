@@ -2,61 +2,64 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Hugo's Hub</title>
+<title>Hugo's Arcade</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0f0f0f">
+<meta name="theme-color" content="#090d1f">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;min-height:100%;background:linear-gradient(145deg,#0f0f0f,#1a1a1a);color:white;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none}
+html,body{width:100%;min-height:100%;background:#090d1f;color:white;overflow-x:hidden}
+body{background:radial-gradient(circle at top left,#203cff55,transparent 35%),radial-gradient(circle at bottom right,#ff3d8f33,transparent 35%),linear-gradient(145deg,#090d1f,#121827 55%,#0b1020)}
 body::-webkit-scrollbar{width:0;background:transparent}
-header{background:#0c0c0cd3;min-height:92px;width:100%;display:flex;align-items:center;padding:18px 16px;padding-right:180px;border-bottom:3px solid #3b82f6}
-.tituloInicio{font-size:1rem;color:#d4d4d8;margin:0 0 4px}
-.tituloInicio2{font-size:1.18rem;color:#fff;margin:0;line-height:1.25}
-.menu{position:fixed;top:10px;right:10px;display:flex;gap:4px;padding:4px;background:rgba(30,30,30,.75);backdrop-filter:blur(18px);border-radius:18px;border:1px solid rgba(255,255,255,.08);z-index:9999;max-width:calc(100vw - 20px)}
-.link{position:relative;width:38px;height:38px;border-radius:14px;text-decoration:none;color:#d4d4d8;overflow:hidden;transition:.25s;flex:0 0 auto}
-.link .icon,.link .label{position:absolute;top:50%;transform:translateY(-50%);transition:.25s}
-.link .icon{left:50%;transform:translate(-50%,-50%);font-size:18px}
-.link .label{display:none}
-.link.active{background:rgba(59,130,246,.25);box-shadow:0 0 12px rgba(59,130,246,.5)}
-.cards{display:grid;grid-template-columns:1fr;gap:18px;padding:18px;width:100%;max-width:520px;margin:auto}
-.card-link{text-decoration:none;color:inherit;display:block}
-.card{width:100%;background:rgba(30,30,30,.55);backdrop-filter:blur(12px);border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05);transition:.25s;cursor:pointer;position:relative}
-.card:active{transform:scale(.98)}
-.card img{width:100%;height:145px;object-fit:cover;display:block;background:#111}
-.card-content{padding:15px;color:#e4e4e7}
-.card-content h2{font-size:1.25rem;margin:0}
-.card-content p{font-size:.9rem;line-height:1.35rem;color:#d4d4d8}
-.separator{display:flex;align-items:center;text-align:center;margin:12px 0;color:#9ca3af;font-size:12px}
-.separator:before,.separator:after{content:"";flex:1;border-bottom:1px solid rgba(255,255,255,.2)}
-.separator:before{margin-right:8px}.separator:after{margin-left:8px}
-.moto-menu{max-height:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;transition:.35s;padding:0 15px}
-.moto-menu.open{max-height:230px;padding-bottom:15px}
-.moto-option{background:rgba(30,30,30,.65);border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:12px;text-decoration:none;color:#d4d4d8;font-size:14px;transition:.25s}
-.moto-option:active{background:rgba(59,130,246,.25);color:#3b82f6}
-footer{background:rgba(12,12,12,.85);backdrop-filter:blur(10px);border-top:3px solid #3b82f6;margin-top:20px}
-.footer-container{max-width:1400px;margin:auto;padding:18px;display:flex;justify-content:center;align-items:center;text-align:center}
-.footer-text{color:#9ca3af;font-size:12px;line-height:1.4}
-@media(max-width:360px){header{padding-right:150px}.menu{top:8px;right:8px}.link{width:34px;height:34px;border-radius:12px}.link .icon{font-size:16px}.tituloInicio2{font-size:1rem}.cards{padding:14px;gap:14px}}
-@media(min-width:700px){header{min-height:110px;padding:0 32px}.tituloInicio{font-size:1.3rem}.tituloInicio2{font-size:1.35rem}.menu{top:15px;right:15px}.link{width:42px;height:42px;border-radius:16px}.link .label{display:block;left:44px;opacity:0;white-space:nowrap;font-size:13px}.link:hover,.link.active{width:110px}.link:hover{background:rgba(255,255,255,.08)}.link:hover .icon,.link.active .icon{left:22px}.link:hover .label,.link.active .label{opacity:1}.link.active .label{color:#3b82f6}.cards{grid-template-columns:repeat(2,1fr);gap:24px;padding:30px;max-width:900px}.card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.8),0 0 20px rgba(59,130,246,.25)}.moto-option:hover{background:rgba(59,130,246,.25);color:#3b82f6;transform:translateX(4px)}}
-@media(min-width:1100px){header{height:120px;padding:0 40px}.cards{grid-template-columns:repeat(4,1fr);gap:30px;padding:40px;max-width:1400px}.card{min-height:300px}.card img{height:120px}.card-content{padding:20px}.separator{margin:20px 0;font-size:14px}footer{margin-top:40px}.footer-container{padding:25px 40px;justify-content:space-between}.footer-text{font-size:14px}}
+.topbar{min-height:118px;padding:22px 18px 18px;border-bottom:2px solid rgba(255,255,255,.08);background:rgba(5,8,20,.72);backdrop-filter:blur(18px);position:sticky;top:0;z-index:10}
+.badge{width:max-content;padding:6px 11px;border-radius:999px;background:rgba(99,102,241,.22);border:1px solid rgba(129,140,248,.35);color:#c7d2fe;font-size:12px;font-weight:900;margin-bottom:10px}
+h1{font-size:28px;line-height:1;color:#fff;letter-spacing:-.7px}
+h1 span{color:#7dd3fc}
+.subtitle{margin-top:8px;color:#cbd5e1;font-size:13px;line-height:18px;max-width:320px}
+.menu{display:flex;gap:8px;overflow-x:auto;padding:14px 16px 2px;scrollbar-width:none}
+.menu::-webkit-scrollbar{display:none}
+.pill{flex:0 0 auto;border:none;border-radius:999px;padding:10px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#e2e8f0;font-size:13px;font-weight:900}
+.pill.active{background:linear-gradient(135deg,#6366f1,#38bdf8);box-shadow:0 0 22px rgba(56,189,248,.25)}
+.cards{display:grid;grid-template-columns:1fr;gap:16px;padding:16px;max-width:540px;margin:0 auto 24px}
+.card{display:block;text-decoration:none;color:inherit;border-radius:22px;overflow:hidden;background:rgba(15,23,42,.72);border:1px solid rgba(255,255,255,.10);box-shadow:0 18px 45px rgba(0,0,0,.38);position:relative}
+.card:active{transform:scale(.985)}
+.thumb{height:150px;background:#111;position:relative;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.05)}
+.thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.72))}
+.tag{position:absolute;top:12px;left:12px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);font-size:11px;font-weight:900;color:white;border:1px solid rgba(255,255,255,.14)}
+.play{position:absolute;right:12px;bottom:12px;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#22c55e,#14b8a6);font-size:20px;box-shadow:0 0 24px rgba(34,197,94,.35)}
+.info{padding:15px}
+.titleRow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+h2{font-size:19px;line-height:24px}
+.type{font-size:11px;font-weight:900;color:#93c5fd;background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.22);padding:5px 8px;border-radius:999px;white-space:nowrap}
+.desc{margin-top:9px;color:#cbd5e1;font-size:13px;line-height:19px}
+.meta{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap}
+.meta span{font-size:11px;color:#dbeafe;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);padding:6px 8px;border-radius:10px}
+.card:nth-child(1){border-color:rgba(34,197,94,.28)}
+.card:nth-child(1) .type{color:#bbf7d0;background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.22)}
+.card:nth-child(2){border-color:rgba(249,115,22,.28)}
+.card:nth-child(2) .play{background:linear-gradient(135deg,#f97316,#ef4444)}
+.card:nth-child(2) .type{color:#fed7aa;background:rgba(249,115,22,.14);border-color:rgba(249,115,22,.22)}
+.card:nth-child(3){border-color:rgba(56,189,248,.28)}
+.card:nth-child(3) .play{background:linear-gradient(135deg,#38bdf8,#6366f1)}
+.card:nth-child(4){border-color:rgba(168,85,247,.28)}
+.card:nth-child(4) .play{background:linear-gradient(135deg,#a855f7,#ec4899)}
+.card:nth-child(5){border-color:rgba(244,63,94,.28)}
+.card:nth-child(5) .play{background:linear-gradient(135deg,#f43f5e,#fb7185)}
+.footer{padding:18px;text-align:center;color:#94a3b8;font-size:12px;border-top:1px solid rgba(255,255,255,.08);background:rgba(2,6,23,.5)}
+@media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr);max-width:920px}.topbar{padding-left:30px}.thumb{height:165px}}
+@media(min-width:1080px){.cards{grid-template-columns:repeat(3,1fr);max-width:1180px}.thumb{height:170px}}
 </style>
 </head>
 <body>
-<header><div><h4 class="tituloInicio">Inicio</h4><h1 class="tituloInicio2">Bem vindo, Hugo's hub</h1></div></header>
-<div class="menu">
-<a href="https://pax0102.github.io/trabalhodaescola/" class="link active"><div class="icon">🏠</div><div class="label">Inicio</div></a>
-<a href="https://pax0102.github.io/Config/" class="link"><div class="icon">⚙️</div><div class="label">Config</div></a>
-</div>
-<div class="cards">
-<a href="https://pax0102.github.io/CS-1.6/" class="card-link"><div class="card"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/1.6.webp"><div class="card-content"><h2>CS 1.6</h2><div class="separator">Informações</div><p>CS 1.6, Tiro, Luta, Armamento | Créditos: Guilherme</p></div></div></a>
-<a href="#" class="card-link"><div class="card"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Drift-Hunters-Pro.jpg"><div class="card-content"><h2>Drift Hunters</h2><div class="separator">Informações</div><p>Drift Hunters Pro, Drift, Carro, Dirigir, Repetitivo</p></div></div></a>
-<div class="card" onclick="toggleMotoMenu()"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/motox3m.webp"><div class="card-content"><h2>Moto X3m</h2><div class="separator">Informações</div><p>Moto X3m, Moto, Classico, Divertido | 3 opções</p></div><div class="moto-menu" id="motoMenu"><a href="https://pax0102.github.io/Moto-X3m/" class="moto-option">🏍️ Moto-X3m</a><a href="https://pax0102.github.io/Moto-X3m-Winter/" class="moto-option">🎄 Moto-X3m-Winter</a><a href="https://pax0102.github.io/Moto-X3m-Spooky-Land/" class="moto-option">🎃 Moto-X3m-Spooky-Land</a></div></div>
-<a href="#" class="card-link"><div class="card"><img src="https://escaperoad.io/cache/data/image/game/crazy-shark-eroad1-f250x250.webp"><div class="card-content"><h2>Crazy Shark</h2><div class="separator">Informações</div><p>Crazy Shark, Tubarao, Aventura, Evolutivo</p></div></div></a>
-<a href="#" class="card-link"><div class="card"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/hardgame2.webp"><div class="card-content"><h2>TWHG 2</h2><div class="separator">Informações</div><p>TWHG 2, Dificil, Paciencia, Levels, Demorado</p></div></div></a>
-<a href="#" class="card-link"><div class="card"><img src="https://pub-c77eb84ebd5c408aa81bb7f3302cac57.r2.dev/attached_assets/game_icons/Drive%20Mad.webp"><div class="card-content"><h2>Drive Mad</h2><div class="separator">Informações</div><p>Drive Mad, Carro, Divertido, Levels, Novo</p></div></div></a>
-<a href="https://pax0102.github.io/Ragdoll-Archers/" class="card-link"><div class="card"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ragdoll-archers.jpg"><div class="card-content"><h2>Ragdoll Archers</h2><div class="separator">Informações</div><p>Ragdoll Archers, Arqueiro, Demorado, Evolutivo</p></div></div></a>
-</div>
-<footer><div class="footer-container"><div class="footer-text">© 2026 Hugo's Hub • Todos os direitos reservados</div></div></footer>
-<script>function toggleMotoMenu(){document.getElementById("motoMenu").classList.toggle("open");}</script>
+<header class="topbar"><div class="badge">🎮 Hugo's Hub Mobile</div><h1>Arcade <span>Games</span></h1><p class="subtitle">Escolha um jogo e toque para abrir. Visual feito para caber certinho no celular.</p></header>
+<nav class="menu"><button class="pill active">🔥 Todos</button><button class="pill">🏹 Ação</button><button class="pill">🚗 Corrida</button><button class="pill">💘 Casual</button></nav>
+<main class="cards">
+<a class="card" href="https://db.ducklit.com/html/ragdoll_archers/index.html"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ragdoll-archers.jpg"><div class="tag">Jogo 01</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Ragdoll Archers</h2><div class="type">Ação</div></div><p class="desc">Arqueiros malucos, física ragdoll e batalhas rápidas para testar mira e paciência.</p><div class="meta"><span>🏹 Arco</span><span>⚔️ Batalha</span><span>⭐ Evolução</span></div></div></a>
+<a class="card" href="https://db.ducklit.com/html/gun_spin/index.html"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io//img/gun-spin.jpg"><div class="tag">Jogo 02</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Gun Spin</h2><div class="type">Skill</div></div><p class="desc">Use o recuo da arma para voar mais longe, juntar moedas e melhorar seu alcance.</p><div class="meta"><span>🔫 Recuo</span><span>💰 Upgrade</span><span>🚀 Distância</span></div></div></a>
+<a class="card" href="https://db.ducklit.com/html/wheelie_bike/index.html"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/wheelie-bike.jpg"><div class="tag">Jogo 03</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Wheelie Bike</h2><div class="type">Equilíbrio</div></div><p class="desc">Segure o grau pelo máximo de tempo possível sem cair. Simples, difícil e viciante.</p><div class="meta"><span>🚲 Bike</span><span>⚖️ Equilíbrio</span><span>🏆 Recorde</span></div></div></a>
+<a class="card" href="https://db.ducklit.com/html/escape_car/index.html"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Escape-Car.jpg"><div class="tag">Jogo 04</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Escape Car</h2><div class="type">Corrida</div></div><p class="desc">Fuja, desvie e sobreviva no trânsito caótico. Reflexo rápido é tudo aqui.</p><div class="meta"><span>🚗 Carro</span><span>💨 Fuga</span><span>⚡ Reflexo</span></div></div></a>
+<a class="card" href="https://db2.ducklit.com/2021/3/love-tester/pre.html"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/love-tester.jpg"><div class="tag">Jogo 05</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Love Tester</h2><div class="type">Casual</div></div><p class="desc">Digite os nomes e descubra a porcentagem do amor. Perfeito para zoar os amigos.</p><div class="meta"><span>💘 Amor</span><span>😂 Zoação</span><span>🎲 Sorte</span></div></div></a>
+</main>
+<div class="footer">© 2026 Hugo's Hub • Arcade mobile</div>
 </body>
 </html>
