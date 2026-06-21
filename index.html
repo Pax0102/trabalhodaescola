@@ -49,37 +49,34 @@ h2{font-size:19px;line-height:24px}
 .footer{padding:18px;text-align:center;color:#94a3b8;font-size:12px;border-top:1px solid rgba(255,255,255,.08);background:rgba(2,6,23,.5)}
 #gameScreen{display:none;position:fixed;inset:0;background:#000;z-index:999999}
 #gameFrame{width:100%;height:100%;border:none;background:#000}
-#backBtn{position:fixed;top:12px;left:12px;z-index:1000000;width:48px;height:48px;border:none;border-radius:50%;background:linear-gradient(135deg,#2563eb,#38bdf8);color:white;font-size:24px;font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.45)}
-#gameTitle{position:fixed;top:12px;left:70px;right:12px;height:48px;z-index:1000000;border-radius:999px;background:rgba(2,6,23,.72);border:1px solid rgba(255,255,255,.12);color:white;display:flex;align-items:center;padding:0 14px;font-size:13px;font-weight:900;backdrop-filter:blur(12px);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#backBtn{position:fixed;top:12px;left:12px;z-index:1000000;width:52px;height:52px;border:none;border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(14px);color:white;font-size:28px;font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08)}
 @media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr);max-width:920px}.topbar{padding-left:30px}.thumb{height:165px}}
 @media(min-width:1080px){.cards{grid-template-columns:repeat(3,1fr);max-width:1180px}.thumb{height:170px}}
 </style>
 </head>
 <body>
 <div id="homeScreen">
-<header class="topbar"><div class="badge">🎮 Hugo's Hub Mobile</div><h1>Arcade <span>Games</span></h1><p class="subtitle">Escolha um jogo e toque para abrir dentro do app. Use o botão de voltar para retornar ao menu.</p></header>
+<header class="topbar"><div class="badge">🎮 Hugo's Hub Mobile</div><h1>Arcade <span>Games</span></h1><p class="subtitle">Escolha um jogo e toque para abrir dentro do app. Use a setinha para voltar ao menu.</p></header>
 <nav class="menu"><button class="pill active">🔥 Todos</button><button class="pill">🏹 Ação</button><button class="pill">🚗 Corrida</button><button class="pill">💘 Casual</button></nav>
 <main class="cards">
-<div class="card" onclick="openGame('Ragdoll Archers','https://db.ducklit.com/html/ragdoll_archers/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ragdoll-archers.jpg"><div class="tag">Jogo 01</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Ragdoll Archers</h2><div class="type">Ação</div></div><p class="desc">Arqueiros malucos, física ragdoll e batalhas rápidas para testar mira e paciência.</p><div class="meta"><span>🏹 Arco</span><span>⚔️ Batalha</span><span>⭐ Evolução</span></div></div></div>
-<div class="card" onclick="openGame('Gun Spin','https://db.ducklit.com/html/gun_spin/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io//img/gun-spin.jpg"><div class="tag">Jogo 02</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Gun Spin</h2><div class="type">Skill</div></div><p class="desc">Use o recuo da arma para voar mais longe, juntar moedas e melhorar seu alcance.</p><div class="meta"><span>🔫 Recuo</span><span>💰 Upgrade</span><span>🚀 Distância</span></div></div></div>
-<div class="card" onclick="openGame('Wheelie Bike','https://db.ducklit.com/html/wheelie_bike/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/wheelie-bike.jpg"><div class="tag">Jogo 03</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Wheelie Bike</h2><div class="type">Equilíbrio</div></div><p class="desc">Segure o grau pelo máximo de tempo possível sem cair. Simples, difícil e viciante.</p><div class="meta"><span>🚲 Bike</span><span>⚖️ Equilíbrio</span><span>🏆 Recorde</span></div></div></div>
-<div class="card" onclick="openGame('Escape Car','https://db.ducklit.com/html/escape_car/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Escape-Car.jpg"><div class="tag">Jogo 04</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Escape Car</h2><div class="type">Corrida</div></div><p class="desc">Fuja, desvie e sobreviva no trânsito caótico. Reflexo rápido é tudo aqui.</p><div class="meta"><span>🚗 Carro</span><span>💨 Fuga</span><span>⚡ Reflexo</span></div></div></div>
-<div class="card" onclick="openGame('Love Tester','https://db2.ducklit.com/2021/3/love-tester/pre.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/love-tester.jpg"><div class="tag">Jogo 05</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Love Tester</h2><div class="type">Casual</div></div><p class="desc">Digite os nomes e descubra a porcentagem do amor. Perfeito para zoar os amigos.</p><div class="meta"><span>💘 Amor</span><span>😂 Zoação</span><span>🎲 Sorte</span></div></div></div>
+<div class="card" onclick="openGame('https://db.ducklit.com/html/ragdoll_archers/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ragdoll-archers.jpg"><div class="tag">Jogo 01</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Ragdoll Archers</h2><div class="type">Ação</div></div><p class="desc">Arqueiros malucos, física ragdoll e batalhas rápidas para testar mira e paciência.</p><div class="meta"><span>🏹 Arco</span><span>⚔️ Batalha</span><span>⭐ Evolução</span></div></div></div>
+<div class="card" onclick="openGame('https://db.ducklit.com/html/gun_spin/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io//img/gun-spin.jpg"><div class="tag">Jogo 02</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Gun Spin</h2><div class="type">Skill</div></div><p class="desc">Use o recuo da arma para voar mais longe, juntar moedas e melhorar seu alcance.</p><div class="meta"><span>🔫 Recuo</span><span>💰 Upgrade</span><span>🚀 Distância</span></div></div></div>
+<div class="card" onclick="openGame('https://db.ducklit.com/html/wheelie_bike/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/wheelie-bike.jpg"><div class="tag">Jogo 03</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Wheelie Bike</h2><div class="type">Equilíbrio</div></div><p class="desc">Segure o grau pelo máximo de tempo possível sem cair. Simples, difícil e viciante.</p><div class="meta"><span>🚲 Bike</span><span>⚖️ Equilíbrio</span><span>🏆 Recorde</span></div></div></div>
+<div class="card" onclick="openGame('https://db.ducklit.com/html/escape_car/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Escape-Car.jpg"><div class="tag">Jogo 04</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Escape Car</h2><div class="type">Corrida</div></div><p class="desc">Fuja, desvie e sobreviva no trânsito caótico. Reflexo rápido é tudo aqui.</p><div class="meta"><span>🚗 Carro</span><span>💨 Fuga</span><span>⚡ Reflexo</span></div></div></div>
+<div class="card" onclick="openGame('https://db2.ducklit.com/2021/3/love-tester/pre.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/love-tester.jpg"><div class="tag">Jogo 05</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Love Tester</h2><div class="type">Casual</div></div><p class="desc">Digite os nomes e descubra a porcentagem do amor. Perfeito para zoar os amigos.</p><div class="meta"><span>💘 Amor</span><span>😂 Zoação</span><span>🎲 Sorte</span></div></div></div>
 </main>
 <div class="footer">© 2026 Hugo's Hub • Arcade mobile</div>
 </div>
 
 <div id="gameScreen">
 <button id="backBtn" onclick="goHome()">‹</button>
-<div id="gameTitle">Carregando...</div>
 <iframe id="gameFrame" allowfullscreen></iframe>
 </div>
 
 <script>
-function openGame(title,url){
+function openGame(url){
   document.getElementById("homeScreen").style.display="none";
   document.getElementById("gameScreen").style.display="block";
-  document.getElementById("gameTitle").textContent=title;
   document.getElementById("gameFrame").src=url;
 }
 function goHome(){
