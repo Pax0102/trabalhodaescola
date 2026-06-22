@@ -49,7 +49,11 @@ h2{font-size:19px;line-height:24px}
 .footer{padding:18px;text-align:center;color:#94a3b8;font-size:12px;border-top:1px solid rgba(255,255,255,.08);background:rgba(2,6,23,.5)}
 #gameScreen{display:none;position:fixed;inset:0;background:#000;z-index:999999}
 #gameFrame{width:100%;height:100%;border:none;background:#000}
-#backBtn{position:fixed;top:12px;left:12px;z-index:1000000;width:52px;height:52px;border:none;border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(14px);color:white;font-size:28px;font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08)}
+#backBtn{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:1000000;width:92px;height:32px;border:none;border-radius:999px;background:rgba(0,0,0,.72);backdrop-filter:blur(14px);color:white;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:6px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.10);transition:width .24s ease,background .24s ease,box-shadow .24s ease,transform .18s ease}
+#backBtn .back-text{max-width:0;opacity:0;overflow:hidden;white-space:nowrap;color:#ff4d4d;transition:max-width .24s ease,opacity .18s ease}
+#backBtn.leaving{width:142px;background:rgba(35,0,0,.88);box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 24px rgba(255,0,0,.32),0 0 0 1px rgba(255,88,88,.24)}
+#backBtn.leaving .back-text{max-width:80px;opacity:1}
+#backBtn:active{transform:translateX(-50%) scale(.97)}
 @media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr);max-width:920px}.topbar{padding-left:30px}.thumb{height:165px}}
 @media(min-width:1080px){.cards{grid-template-columns:repeat(3,1fr);max-width:1180px}.thumb{height:170px}}
 </style>
@@ -76,20 +80,29 @@ h2{font-size:19px;line-height:24px}
 </div>
 
 <div id="gameScreen">
-<button id="backBtn" onclick="goHome()">‹</button>
+<button id="backBtn" onclick="leaveGame()"><span class="door-icon">🚪</span><span class="back-text">Voltar</span></button>
 <iframe id="gameFrame" allowfullscreen></iframe>
 </div>
 
 <script>
 function openGame(url){
+  const backBtn=document.getElementById("backBtn");
+  backBtn.classList.remove("leaving");
   document.getElementById("homeScreen").style.display="none";
   document.getElementById("gameScreen").style.display="block";
   document.getElementById("gameFrame").src=url;
 }
+function leaveGame(){
+  const backBtn=document.getElementById("backBtn");
+  backBtn.classList.add("leaving");
+  setTimeout(goHome,360);
+}
 function goHome(){
+  const backBtn=document.getElementById("backBtn");
   document.getElementById("gameFrame").src="about:blank";
   document.getElementById("gameScreen").style.display="none";
   document.getElementById("homeScreen").style.display="block";
+  backBtn.classList.remove("leaving");
 }
 function filterGames(category,btn){
   document.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));
