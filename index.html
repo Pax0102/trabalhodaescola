@@ -49,10 +49,10 @@ h2{font-size:19px;line-height:24px}
 .footer{padding:18px;text-align:center;color:#94a3b8;font-size:12px;border-top:1px solid rgba(255,255,255,.08);background:rgba(2,6,23,.5)}
 #gameScreen{display:none;position:fixed;inset:0;background:#000;z-index:999999}
 #gameFrame{width:100%;height:100%;border:none;background:#000}
-#backBtn{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:1000000;width:92px;height:32px;border:none;border-radius:999px;background:rgba(0,0,0,.72);backdrop-filter:blur(14px);color:white;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:6px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.10);transition:width .24s ease,background .24s ease,box-shadow .24s ease,transform .18s ease}
-#backBtn .back-text{max-width:0;opacity:0;overflow:hidden;white-space:nowrap;color:#ff4d4d;transition:max-width .24s ease,opacity .18s ease}
-#backBtn.leaving{width:142px;background:rgba(35,0,0,.88);box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 24px rgba(255,0,0,.32),0 0 0 1px rgba(255,88,88,.24)}
-#backBtn.leaving .back-text{max-width:80px;opacity:1}
+#backBtn{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:1000000;width:92px;height:32px;border:none;border-radius:999px;background:rgba(0,0,0,.72);backdrop-filter:blur(14px);color:white;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:6px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.10);transition:width .35s ease,background .35s ease,box-shadow .35s ease,transform .18s ease}
+#backBtn .back-text{display:inline-block;width:0;opacity:0;overflow:hidden;white-space:nowrap;color:#ff3b3b;font-size:14px;font-weight:950;transition:width .35s ease,opacity .22s ease}
+#backBtn.confirm{width:152px;background:rgba(45,0,0,.94);box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 24px rgba(255,0,0,.38),0 0 0 1px rgba(255,88,88,.28)}
+#backBtn.confirm .back-text{width:58px;opacity:1}
 #backBtn:active{transform:translateX(-50%) scale(.97)}
 @media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr);max-width:920px}.topbar{padding-left:30px}.thumb{height:165px}}
 @media(min-width:1080px){.cards{grid-template-columns:repeat(3,1fr);max-width:1180px}.thumb{height:170px}}
@@ -61,14 +61,12 @@ h2{font-size:19px;line-height:24px}
 <body>
 <div id="homeScreen">
 <header class="topbar"><div class="badge">🎮 Hugo's Hub Mobile</div><h1>Arcade <span>Games</span></h1><p class="subtitle">Escolha um jogo e toque para abrir dentro do app. Use a setinha para voltar ao menu.</p></header>
-
 <nav class="menu">
 <button class="pill active" onclick="filterGames('todos',this)">🔥 Todos</button>
 <button class="pill" onclick="filterGames('acao',this)">🏹 Ação</button>
 <button class="pill" onclick="filterGames('corrida',this)">🚗 Corrida</button>
 <button class="pill" onclick="filterGames('casual',this)">💘 Casual</button>
 </nav>
-
 <main class="cards">
 <div class="card" data-category="acao" onclick="openGame('https://db.ducklit.com/html/ragdoll_archers/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ragdoll-archers.jpg"><div class="tag">Jogo 01</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Ragdoll Archers</h2><div class="type">Ação</div></div><p class="desc">Arqueiros malucos, física ragdoll e batalhas rápidas para testar mira e paciência.</p><div class="meta"><span>🏹 Arco</span><span>⚔️ Batalha</span><span>⭐ Evolução</span></div></div></div>
 <div class="card" data-category="acao" onclick="openGame('https://db.ducklit.com/html/gun_spin/index.html')"><div class="thumb"><img src="https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io//img/gun-spin.jpg"><div class="tag">Jogo 02</div><div class="play">▶</div></div><div class="info"><div class="titleRow"><h2>Gun Spin</h2><div class="type">Skill</div></div><p class="desc">Use o recuo da arma para voar mais longe, juntar moedas e melhorar seu alcance.</p><div class="meta"><span>🔫 Recuo</span><span>💰 Upgrade</span><span>🚀 Distância</span></div></div></div>
@@ -80,30 +78,49 @@ h2{font-size:19px;line-height:24px}
 </div>
 
 <div id="gameScreen">
-<button id="backBtn" onclick="leaveGame()"><span class="door-icon">🚪</span><span class="back-text">Voltar</span></button>
+<button id="backBtn" onclick="handleBackButton()"><span class="door-icon">🚪</span><span class="back-text">Voltar</span></button>
 <iframe id="gameFrame" allowfullscreen></iframe>
 </div>
 
 <script>
+let backConfirm=false;
+let backResetTimer=null;
+
 function openGame(url){
   const backBtn=document.getElementById("backBtn");
-  backBtn.classList.remove("leaving");
+  backConfirm=false;
+  clearTimeout(backResetTimer);
+  backBtn.classList.remove("confirm");
   document.getElementById("homeScreen").style.display="none";
   document.getElementById("gameScreen").style.display="block";
   document.getElementById("gameFrame").src=url;
 }
-function leaveGame(){
+
+function handleBackButton(){
   const backBtn=document.getElementById("backBtn");
-  backBtn.classList.add("leaving");
-  setTimeout(goHome,360);
+  if(!backConfirm){
+    backConfirm=true;
+    backBtn.classList.add("confirm");
+    clearTimeout(backResetTimer);
+    backResetTimer=setTimeout(()=>{
+      backConfirm=false;
+      backBtn.classList.remove("confirm");
+    },2200);
+    return;
+  }
+  goHome();
 }
+
 function goHome(){
   const backBtn=document.getElementById("backBtn");
+  backConfirm=false;
+  clearTimeout(backResetTimer);
   document.getElementById("gameFrame").src="about:blank";
   document.getElementById("gameScreen").style.display="none";
   document.getElementById("homeScreen").style.display="block";
-  backBtn.classList.remove("leaving");
+  backBtn.classList.remove("confirm");
 }
+
 function filterGames(category,btn){
   document.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));
   btn.classList.add("active");
